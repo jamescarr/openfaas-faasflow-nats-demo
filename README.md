@@ -95,9 +95,9 @@ uppercase-python                0               1
 You should see the orchestrator respond quickly that async invocations were queued. Then check logs for the two worker functions to see output:
 
 ```bash
-faas-cli logs uppercase-python --follow
+faas-cli logs uppercase-python
 # in another terminal
-faas-cli logs reverse-typescript --follow
+faas-cli logs reverse-typescript
 ```
 
 ## What this demonstrates
