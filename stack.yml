@@ -1,0 +1,32 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  main-typescript:
+    lang: node22
+    handler: ./functions/main-typescript
+    image: localhost:5000/main-typescript:latest
+    environment:
+      write_debug: true
+    annotations:
+      com.openfaas.scale.zero: "true"
+  uppercase-python:
+    lang: python3-http
+    handler: ./functions/uppercase-python
+    image: localhost:5000/uppercase-python:latest
+    environment:
+      write_debug: true
+    annotations:
+      com.openfaas.scale.zero: "true"
+  reverse-typescript:
+    lang: node22
+    handler: ./functions/reverse-typescript
+    image: localhost:5000/reverse-typescript:latest
+    environment:
+      write_debug: true
+    annotations:
+      com.openfaas.scale.zero: "true"
+
+

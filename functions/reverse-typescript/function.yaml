@@ -1,0 +1,6 @@
+language: node22
+fprocess: node index.js
+environment:
+  write_debug: true
+
+

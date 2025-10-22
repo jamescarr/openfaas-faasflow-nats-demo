@@ -1,0 +1,13 @@
+{
+  "name": "reverse-typescript",
+  "version": "1.0.0",
+  "description": "Reverse service name function",
+  "main": "handler.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo 'no tests' && exit 0"
+  },
+  "dependencies": {}
+}
+
+

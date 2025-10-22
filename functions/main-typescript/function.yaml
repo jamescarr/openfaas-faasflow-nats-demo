@@ -1,0 +1,8 @@
+language: node22
+fprocess: node index.js
+build_options:
+  - dev
+environment:
+  exec_timeout: 60s
+
+

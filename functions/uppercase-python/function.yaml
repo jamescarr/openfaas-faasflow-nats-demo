@@ -1,0 +1,6 @@
+language: python3
+fprocess: python index.py
+environment:
+  write_debug: true
+
+

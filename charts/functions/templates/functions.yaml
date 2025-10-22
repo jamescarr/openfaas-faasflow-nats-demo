@@ -1,0 +1,40 @@
+apiVersion: openfaas.com/v1
+kind: Function
+metadata:
+  name: main-typescript
+  namespace: {{ .Values.namespace }}
+spec:
+  name: main-typescript
+  image: {{ .Values.images.main }}
+  annotations:
+    com.openfaas.scale.zero: "true"
+  environment:
+    write_debug: "true"
+---
+apiVersion: openfaas.com/v1
+kind: Function
+metadata:
+  name: uppercase-python
+  namespace: {{ .Values.namespace }}
+spec:
+  name: uppercase-python
+  image: {{ .Values.images.upper }}
+  annotations:
+    com.openfaas.scale.zero: "true"
+  environment:
+    write_debug: "true"
+---
+apiVersion: openfaas.com/v1
+kind: Function
+metadata:
+  name: reverse-typescript
+  namespace: {{ .Values.namespace }}
+spec:
+  name: reverse-typescript
+  image: {{ .Values.images.reverse }}
+  annotations:
+    com.openfaas.scale.zero: "true"
+  environment:
+    write_debug: "true"
+
+
