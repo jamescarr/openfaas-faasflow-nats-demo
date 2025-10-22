@@ -1,6 +1,8 @@
 # OpenFaaS + NATS (async) demo with TypeScript/Python functions
 
-![Walkthrough of this system very quickly](https://cdn.zappy.app/v3732a2bd3e2611eb62169cc315bf3041.mp4)
+<video src="https://cdn.zappy.app/v3732a2bd3e2611eb62169cc315bf3041.mp4" controls width="600">
+  Your browser does not support the video tag.
+</video>
 
 This project demonstrates asynchronous, evented delivery on OpenFaaS using NATS. A TypeScript "main" function iterates a list of service names and invokes two other functions asynchronously via the OpenFaaS Gateway's async endpoint (backed by NATS queue-worker).
 
