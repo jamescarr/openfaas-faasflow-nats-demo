@@ -1,16 +1,7 @@
-import axios from 'axios'
+const axios = require('axios')
 
-type Context = {
-  status: (code: number) => Context
-  succeed: (body: string) => any
-}
-
-type Event = {
-  body?: any
-}
-
-module.exports = async (_event: Event, context: Context) => {
-  const services: string[] = [
+module.exports = async (_event, context) => {
+  const services = [
     'orders-service',
     'users-service',
     'billing-service'
@@ -18,7 +9,7 @@ module.exports = async (_event: Event, context: Context) => {
 
   const gateway = process.env.OPENFAAS_GATEWAY || 'http://gateway.openfaas:8080'
 
-  const asyncInvoke = (fn: string, body: string) => axios.post(
+  const asyncInvoke = (fn, body) => axios.post(
     `${gateway}/async-function/${fn}`,
     body,
     { headers: { 'Content-Type': 'text/plain' } }
@@ -27,7 +18,7 @@ module.exports = async (_event: Event, context: Context) => {
   await Promise.all(
     services.flatMap((svc) => [
       asyncInvoke('uppercase-python', svc),
-      asyncInvoke('reverse-typescript', svc)
+      asyncInvoke('reverse-node', svc)
     ])
   )
 

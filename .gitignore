@@ -31,8 +31,7 @@ build/
 coverage/
 .cache/
 
-# Generated JavaScript from TypeScript functions
-functions/*/handler.js
+# (allow committing JS handlers)
 
 # Helm packages
 chart.tgz

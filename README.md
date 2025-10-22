@@ -1,12 +1,12 @@
-# OpenFaaS + NATS (async) demo with TypeScript/Python functions
+# OpenFaaS + NATS (async) demo with node/Python functions
 
 [Video walkthrough of this project](https://cdn.zappy.app/v3f46300bb23350178558a7ca541b2800.mp4)
 
-This project demonstrates asynchronous, evented delivery on OpenFaaS using NATS. A TypeScript "main" function iterates a list of service names and invokes two other functions asynchronously via the OpenFaaS Gateway's async endpoint (backed by NATS queue-worker).
+This project demonstrates asynchronous, evented delivery on OpenFaaS using NATS. A node "main" function iterates a list of service names and invokes two other functions asynchronously via the OpenFaaS Gateway's async endpoint (backed by NATS queue-worker).
 
-- main orchestrator (TypeScript): posts async jobs for each service to two functions
+- main orchestrator (node): posts async jobs for each service to two functions
 - uppercase (Python): prints the uppercased service name
-- reverse (TypeScript): prints the reversed service name
+- reverse (node): prints the reversed service name
 
 ## Prerequisites
 
@@ -26,7 +26,6 @@ brew install kind helm faas-cli
 
 ```bash
 kubectl config use-context docker-desktop
-cd openfaas-faasflow-nats-demo
 ./scripts/kind-create.sh
 ```
 
@@ -67,12 +66,12 @@ Once this completes, you should see output similar to the following:
 
 ```bash
 Deployed. 202 Accepted.
-URL: http://127.0.0.1:8080/function/reverse-typescript
+URL: http://127.0.0.1:8080/function/reverse-node
 
-Deploying: main-typescript.
+Deploying: main-node.
 
 Deployed. 202 Accepted.
-URL: http://127.0.0.1:8080/function/main-typescript
+URL: http://127.0.0.1:8080/function/main-node
 
 Deploying: uppercase-python.
 
@@ -81,8 +80,8 @@ URL: http://127.0.0.1:8080/function/uppercase-python
 
 Deployed. Functions:
 Function                        Invocations     Replicas
-main-typescript                 0               1
-reverse-typescript              0               1
+main-node                 0               1
+reverse-node              0               1
 uppercase-python                0               1
 ```
 
@@ -97,18 +96,18 @@ You should see the orchestrator respond quickly that async invocations were queu
 ```bash
 faas-cli logs uppercase-python
 # in another terminal
-faas-cli logs reverse-typescript
+faas-cli logs reverse-node
 ```
 
 ## What this demonstrates
 
 - OpenFaaS async invocation via `POST /async-function/<fn>` using NATS queue-worker
-- TypeScript and Python functions
-- A TypeScript orchestrator that fans out events to two worker functions
+- node and Python functions
+- A node orchestrator that fans out events to two worker functions
 
 ## Notes on faas-flow
 
-This demo focuses on OpenFaaS async with NATS. faas-flow is a workflow library for building more advanced flows on OpenFaaS. You can extend this demo by creating a flow function (typically written in Go using the faas-flow SDK) that composes `uppercase-python` and `reverse-typescript`. The async delivery still uses NATS under the hood.
+This demo focuses on OpenFaaS async with NATS. faas-flow is a workflow library for building more advanced flows on OpenFaaS. You can extend this demo by creating a flow function (typically written in Go using the faas-flow SDK) that composes `uppercase-python` and `reverse-node`. The async delivery still uses NATS under the hood.
 
 ## Cleanup
 

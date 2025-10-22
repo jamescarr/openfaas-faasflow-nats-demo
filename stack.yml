@@ -4,10 +4,10 @@ provider:
   gateway: http://127.0.0.1:8080
 
 functions:
-  main-typescript:
+  main-node:
     lang: node22
-    handler: ./functions/main-typescript
-    image: localhost:5000/main-typescript:latest
+    handler: ./functions/main-node
+    image: localhost:5000/main-node:latest
     environment:
       write_debug: true
     annotations:
@@ -20,10 +20,10 @@ functions:
       write_debug: true
     annotations:
       com.openfaas.scale.zero: "true"
-  reverse-typescript:
+  reverse-node:
     lang: node22
-    handler: ./functions/reverse-typescript
-    image: localhost:5000/reverse-typescript:latest
+    handler: ./functions/reverse-node
+    image: localhost:5000/reverse-node:latest
     environment:
       write_debug: true
     annotations:

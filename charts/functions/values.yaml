@@ -1,8 +1,8 @@
 gateway: http://127.0.0.1:8080
 namespace: openfaas-fn
 images:
-  main: localhost:5000/main-typescript:latest
+  main: localhost:5000/main-node:latest
   upper: localhost:5000/uppercase-python:latest
-  reverse: localhost:5000/reverse-typescript:latest
+  reverse: localhost:5000/reverse-node:latest
 
 
