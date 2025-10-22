@@ -5,9 +5,14 @@
   "main": "handler.js",
   "scripts": {
     "start": "node index.js",
+    "build": "tsc",
     "test": "echo 'no tests' && exit 0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.5"
+  }
 }
 
 

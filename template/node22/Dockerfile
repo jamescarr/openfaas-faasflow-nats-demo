@@ -40,6 +40,9 @@ RUN npm i
 # COPY function files and folders
 COPY --chown=app:app function/ ./
 
+# Build TypeScript (expects a build script if TS is used)
+RUN npm run build || echo "No build script defined; skipping TS build"
+
 # Run any tests that may be available
 RUN npm test
 
