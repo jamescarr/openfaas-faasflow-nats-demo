@@ -80,8 +80,8 @@ URL: http://127.0.0.1:8080/function/uppercase-python
 
 Deployed. Functions:
 Function                        Invocations     Replicas
-main-node                 0               1
-reverse-node              0               1
+main-node                       0               1
+reverse-node                    0               1
 uppercase-python                0               1
 ```
 
